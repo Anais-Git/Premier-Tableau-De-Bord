@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>KPI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src='https://cdn.plot.ly/plotly-2.30.0.min.js'></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+
+
+
+
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="">Égalité salariale hommes-femmes en France en 2023</h1>
+            <h2> <a href="https://catalogue-donnees.insee.fr/fr/catalogue/recherche/DS_DERA_PRIVE_ANNUEL">Télécharger le fichier csv</a></h2>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+                <div class="form-group col-4">
+                    <p>Selectionner un fichier local CSV :</p>
+                </div>
+                <div class="form-group col-4">
+                    <input id="csv" type="file" accept=".csv">
+                </div>
+                <div class="col-4 align-self-center" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="load_btn">Load</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+                <div class="col-md-4">
+                    <div class="border rounded-3 m-4">
+                        <div class="col-12">
+                            <h2>Répartition salariale hommes femmes</h2>
+                        </div>
+                        <div class="col-12 text-white rounded mt-2">
+                            <div id="myplot_gender_pie">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+                <div class="col-md-4">
+                    <div class="border rounded-3 m-4">
+                        <div class="col-12">
+                            <h2>Différence de salaire selon la taille de l'entreprise</h2>
+                        </div>
+                        <div class="col-12 text-white rounded mt-2">
+                            <div id="myplot_salary_by_size">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+                <div class="col-md-4">
+                    <div class="border rounded-3 m-4">
+                        <div class="col-12">
+                            <h2>Répartition des salaires par secteur économique</h2>
+                        </div>
+                        <div class="col-12 text-white rounded mt-2">
+                        <label for="dataset">Choisir une série :</label>
+                        <select id="dataset" onchange="serieChoix()">
+                            <option value="femmes">Part des femmes</option>
+                            <option value="hommes">Part des hommes</option>
+                            <option value="salaire">Salaire moyen</option>
+                        </select>
+                            <div id="myplot_salary_by_activity">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+        <div class="col-md-8">
+            <div class="border rounded-3 m-4">
+                <div class="col-12">
+                    <h2>Salaire Moyen par Catégorie</h2>
+                    <label for="salaryType">Choisissez :</label>
+                    <select id="salaryType" onchange="serieChoixSocioPro()">
+                        <option value="global">Salaire Moyen Global</option>
+                        <option value="femmes">Salaire Moyen Femmes</option>
+                        <option value="hommes">Salaire Moyen Hommes</option>
+                    </select>
+                </div>
+                <div class="col-12 text-white rounded mt-2">
+                    <div id="myplot_salary_by_sociopro"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div>
+        <div class="row" style="margin-top:10px; margin-left:20px; margin-right:20px">
+            <div class="col-md-4">
+                <div class="border rounded-3 m-4">
+                    <div class="col-12">
+                        <h2>Taux de Temps Plein</h2>
+                        <label for="choixJauge">Choisissez :</label>
+                        <select id="choixJauge">
+                            <option value="global">Temps Plein vs Temps Partiel</option>
+                            <option value="femmes">Temps Plein Femmes</option>
+                            <option value="hommes">Temps Plein Hommes</option>
+                        </select>
+                        <button onclick="changerJauge()">Changer la jauge</button>
+                    </div>
+                    <div class="col-12 text-white rounded mt-2">
+                        <div id="myplot_jauge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div>
+            <div class="row" style="margin-top:10px;margin-left:20px;margin-right:20px">
+                <div class="col-md-4">
+                    <div class="border rounded-3 m-4">
+                        <div class="col-12">
+                            <h2>Différence de salaire selon l'âge</h2>
+                        </div>
+                        <div class="col-12 text-white rounded mt-2">
+                            <div id="myplot_salary_by_age">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <script src="js/readfile.js"></script>
+        <script src="js/projet.js"></script>
+
+
+
+    </body>
+</html>
+
+
